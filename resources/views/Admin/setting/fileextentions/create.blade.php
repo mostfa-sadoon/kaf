@@ -10,18 +10,19 @@
 @endsection
 @section('content')
 <div class="title">
-    <p>إضافة صف</p>
-    <p id="trace">لوحة القيادة &gt; إضافة صف</p>
+    <p>إضافة نوع ملف</p>
+    <p id="trace">لوحة القيادة &gt; إضافة نوع ملف </p>
 </div>
 <div class="users-contect addUser">
     <form action="{{route('fileextentions.store')}}" method="post">
         @csrf
-
+        <div>
         <label>{{ __('dashboard.'.Config::get('app.locale').'.name') }}</label>
         <input class="form-control" name="name" type="text">
         @if ($errors->has('name'))
         <p class="text-danger">{{ $errors->first('name')}}</p>
         @endif
+        </div>
         <div class="save">
             <input type="submit" value="حفظ">
         </div>

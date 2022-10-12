@@ -10,8 +10,8 @@
 @endsection
 @section('content')
 <div class="title">
-    <p>إضافة مستخدم</p>
-    <p id="trace">لوحة القيادة &gt; إضافة مستخدم</p>
+    <p>تعديل نوع ملف</p>
+    <p id="trace">لوحة القيادة &gt;  تعديل نوع ملف</p>
 </div>
 <div class="users-contect addUser">
     <form action="{{route('fileextentions.update',$fileextention->id)}}" method="post">
