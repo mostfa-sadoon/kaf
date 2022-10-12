@@ -67,6 +67,11 @@ Route::group([ 'namespace' => 'Admin','middleware' => 'AdminAuth' ,'prefix'=>'ad
     Route::get('/setuplogbook',function(){
         return view('Admin.setupLogbook.index');
     })->name('Admin.setuplogbook');
+
+    Route::get('/setuplogbook/create',function(){
+        return view('Admin.setupLogbook.create');
+    })->name('Admin.setuplogbook.create');
+
     Route::get('/logbook',function(){
         return view('Admin.logbook.index');
     })->name('Admin.logbook');

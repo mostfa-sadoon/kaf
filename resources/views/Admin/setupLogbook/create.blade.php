@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{asset('/css/global.css')}}">
 <link rel="stylesheet" href="{{asset('/css/dashboard-g.css')}}">
 <link rel="stylesheet" href="{{asset('/css/users.css')}}">
+<link rel="stylesheet" href="{{asset('/css/addLogbook.css')}}">
 @endsection
 
 
@@ -13,17 +14,11 @@
 
 
 <div class="title">
-    <p>إعداد سجل المتابعة</p>
-    <p id="trace">لوحة القيادة &gt; إعداد سجل المتابعة</p>
+    <p>إضافة سجل المتابعة</p>
+    <p id="trace">لوحة القيادة &gt; إضافة سجل المتابعة</p>
 </div>
-<div class="users-contect setup">
+<div class="users-contect addLogbook">
     <div class="filter">
-        <div class="title">
-            <p>فلتر</p>
-            <div class="arrow" id="toggleFilter">
-                <i class="fa-solid fa-angle-up"></i>
-            </div>
-        </div>
         <div class="filter-items" id="filterItems">
             <select name="subject" id="subject">
                 <option selected disabled hidden>
@@ -57,24 +52,24 @@
             </select>
         </div>
     </div>
-    <div class="add-user">
-        <a href="{{route('Admin.setuplogbook.create')}}">
-            <span>إضافة سجل متابعة</span>
-            <img src="{{asset('/assets/icons/add-circle.svg')}}" alt="إضافة مستخدم">
-        </a>
+    <div class="download">
+        <button>
+            <span>تنزيل البيانات من نظام نور</span>
+            <img src="{{asset('/assets/icons/download.svg')}}" alt="تنزيل">
+        </button>
+    </div>
+    <div class="add-col">
+        <img src="{{asset('/assets/icons/add-circle.svg')}}" alt="إضافة" id="addColBtn">
     </div>
     <div class="table-responsive">
-        <table>
+        <table id="table">
             <tr>
-                <th>الإسم الأول</th>
-                <th>إسم العائلة</th>
-                <th>إسم المستخدم</th>
-                <th>رقم السجل المدني</th>
-                <th>رقم الحساب البنكي</th>
-                <th>نوع المستخدم</th>
-                <th>الرصيد</th>
-                <th>الصلاحيات</th>
-                <th>العمليات</th>
+                <th>رقم الطالب</th>
+                <th>إسم الطالب</th>
+                <th>العمود الأول</th>
+                <th>العمود الثاني</th>
+                <th>العمود الثالث</th>
+                <th>العمود الرابع</th>
             </tr>
             <tr>
                 <td></td>
@@ -83,12 +78,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
             </tr>
             <tr>
                 <td></td>
@@ -97,12 +86,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
             </tr>
             <tr>
                 <td></td>
@@ -111,12 +94,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
             </tr>
             <tr>
                 <td></td>
@@ -125,28 +102,14 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
             </tr>
         </table>
+    </div>
+    <div class="save-log">
+        <button>
+            <span>حفظ السجل</span>
+            <img src="../assets/icons/save.svg" alt="حفظ">
+        </button>
     </div>
 </div>
 
@@ -158,7 +121,8 @@
 @section('scripts')
         <script src="{{asset('/js/dashboard.js')}}"></script>
         <script src="{{asset('/js/filter.js')}}"></script>
-    <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('/js/addCol.js')}}"></script>
 
     <script>
         $('#user-type').change(function () {
