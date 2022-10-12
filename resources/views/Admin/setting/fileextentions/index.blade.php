@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="add-user">
-        <a href="">
+        <a href="{{route('fileextentions.create')}}">
             <span>إضافة  امتداد ملف</span>
             <img src="../assets/icons/add-circle.svg" alt="إضافة مستخدم">
         </a>
@@ -44,10 +44,11 @@
              <tr>
                 <td>{{$fileextention->name}}</td>
                 <td>
-                   <a href=""> <i class="fa-solid fa-pen-to-square"></i> </a>
-                   <form action="" method="post">
+                   <a href="{{route('fileextentions.edit',$fileextention->id)}}"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                   <form action="{{route('fileextentions.destroy',0)}}" method="post">
                     @csrf
                     @method('delete')
+                    <input type="hidden" name="id" value="{{$fileextention->id}}">
                     <button type="submit" class="btn"> <i class="fa-solid fa-trash"></i></button>
                    </form>
                 </td>
