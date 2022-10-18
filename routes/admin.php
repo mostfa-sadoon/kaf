@@ -127,9 +127,12 @@ Route::group([
 
 
 Route::fallback(function () {
-    Route::group(['namespace' => 'Admin\Auth'] , function () {
-     Route::get('/login','AuthController@login')->name('admin.login');
-    });
+    // Route::group(['namespace' => 'Admin\Auth'] , function () {
+    //  Route::get('/login','AuthController@login')->name('admin.login');
+    // });
+
+    return view('Admin.pages.error_404');
+
     // return response()->json([
     //     'data' => [],
     //     'success' => false,

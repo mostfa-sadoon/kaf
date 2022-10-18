@@ -59,7 +59,7 @@ trait GeneralTrait
             'result' => true,
             'errNum' => "S000",
             'message' => $msg,
-            $key => $value
+             $key => $value
         ]);
     }
 
