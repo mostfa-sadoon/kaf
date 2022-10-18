@@ -1,6 +1,6 @@
 @extends('admin_temp')
 @section('title')
-<title>كاف | إضافة مستخدم</title>
+<title>  كاف | تعديل ترم دراسي</title>
 @endsection
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/global.css')}}">
@@ -11,7 +11,7 @@
 @section('content')
 <div class="title">
     <p>إضافة مستخدم</p>
-    <p id="trace">لوحة القيادة &gt; إضافة مستخدم</p>
+    <p id="trace">لوحة القيادة &gt; تعديل ترم دراسي</p>
 </div>
 <div class="users-contect addUser">
     <form action="{{route('semesters.update',$Semester->id)}}" method="post">

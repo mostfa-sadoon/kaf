@@ -1,6 +1,6 @@
 @extends('admin_temp')
 @section('title')
-<title>كاف | إضافة مستخدم</title>
+<title>كاف | إضافة فئه ملف</title>
 @endsection
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/global.css')}}">

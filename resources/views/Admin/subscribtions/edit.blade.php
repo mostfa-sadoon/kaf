@@ -10,8 +10,8 @@
 @endsection
 @section('content')
 <div class="title">
-    <p>إضافة مستخدم</p>
-    <p id="trace">لوحة القيادة &gt; إضافة مستخدم</p>
+    <p>تعديل اشتراك</p>
+    <p id="trace">لوحة القيادة &gt;  تعديل اشتراك</p>
 </div>
 <div class="users-contect addUser">
     <form action="{{route('admin.userupdate')}}" method="post">

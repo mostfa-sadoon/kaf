@@ -16,6 +16,10 @@ use Session;
 class AuthController extends Controller
 {
     //
+    // public function __construct(){
+    //     $this->middleware('PreventBackHistory');
+    // }
+
     public function login(){
         return view('Admin.Auth.login');
     }
@@ -98,8 +102,9 @@ class AuthController extends Controller
 
     public function signOut(Request $request) {
     //    dd($request->all());
-        Session::flush();
-        Auth::logout();
-        return redirect('/login');
+            Session::flush();
+            Auth::logout();
+            
+           return redirect()->route('admin.login');
     }
 }

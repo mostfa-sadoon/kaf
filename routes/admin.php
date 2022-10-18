@@ -17,18 +17,21 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 //UserController
 
 Route::group(['namespace' => 'Admin\Auth'] , function () {
-    Route::get('/','AuthController@login')->name('admin.login');
+    //Route::get('/','AuthController@login')->name('admin.login');
 
     Route::get('/login','AuthController@login')->name('admin.login');
     Route::POST('/Admin/login','AuthController@Submitlogin')->name('admin.Submitlogin');
-    Route::POST('/Admin/logout','AuthController@signout')->name('admin.signout');
+    Route::group(['middleware'=>'PreventBackHistory'],function(){
+        Route::POST('/Admin/logout','AuthController@signout')->name('admin.signout');
+    });
+
     Route::get('/forget/password','AuthController@forgetpassword')->name('admin.forgetpassword');
 
     Route::POST('/Admin/recive/email','AuthController@reciveemail')->name('admin.reciveemail');
     Route::get('/forget/password/sendtoken','AuthController@sendToken')->name('admin.sendToken');
     Route::post('/forget/password/ressetpassword','AuthController@ressetpassword')->name('admin.ressetpassword');
 });
-Route::group([ 'namespace' => 'Admin','middleware' => 'AdminAuth' ,'prefix'=>'admin'] , function () {
+    Route::group([ 'namespace' => 'Admin','middleware' => ['AdminAuth','PreventBackHistory'] ,'prefix'=>'admin'] , function () {
     //user operations
     Route::get('/user','UserController@index')->name('admin.user');
     Route::post('/usertype','UserController@usertype')->name('admin.usertype');

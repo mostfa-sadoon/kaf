@@ -153,11 +153,13 @@
 
     <br>
 
-    
+
 <script>
     console.log(document.querySelector('.verticalmenu-content'));
      document.querySelector('.verticalmenu-content').className = "verticalmenu-content has-showmore"
     //$(".verticalmenu-content").attr('class' , 'verticalmenu-content has-showmore');
+    window.onbeforeunload = function() { return "Your work will be lost."; };
+
 </script>
 
 @stop

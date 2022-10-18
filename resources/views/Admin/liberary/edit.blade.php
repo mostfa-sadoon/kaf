@@ -13,8 +13,8 @@
 @endsection
 @section('content')
 <div class="title">
-    <p> إضافة كتاب</p>
-    <p id="trace">لوحة القيادة &gt; إضافة كتاب</p>
+    <p> تعديل كتاب</p>
+    <p id="trace">لوحة القيادة &gt;  تعديل كتاب</p>
 </div>
 <div class="users-contect addBook">
     <form action="{{route('admin.updatebook')}}" method="post"  enctype="multipart/form-data">

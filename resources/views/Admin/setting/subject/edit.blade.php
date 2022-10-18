@@ -1,6 +1,6 @@
 @extends('admin_temp')
 @section('title')
-<title>كاف | إضافة مستخدم</title>
+<title>كاف | تعديل ماده</title>
 @endsection
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/global.css')}}">
@@ -10,8 +10,8 @@
 @endsection
 @section('content')
 <div class="title">
-    <p>إضافة مستخدم</p>
-    <p id="trace">لوحة القيادة &gt; إضافة مستخدم</p>
+    <p>تعديل ماده</p>
+    <p id="trace">لوحة القيادة &gt;  تعديل ماده</p>
 </div>
 <div class="users-contect addUser">
     <form action="{{route('subjects.update',$subject->id)}}" method="post">

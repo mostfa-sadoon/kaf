@@ -74,5 +74,6 @@ class Kernel extends HttpKernel
         'CheckLanguageApi'=>\App\Http\Middleware\CheckLanguageApi::class,
         // 'CheckAdmin' =>\App\Http\Middleware\AdminMiddleware::class,
         // 'ClientLogin'=>\App\Http\Middleware\ClientMiddleware::class,
+        'PreventBackHistory'=> \App\Http\Middleware\PreventBackHistory::class,
     ];
 }
