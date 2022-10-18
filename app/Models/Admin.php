@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Authenticatable
 {
-    
+
     protected $table = "admins";
     protected $guarded = [];
     public $timestamps = true;
+    protected $append = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->f_name} {$this->l_name}";
+    }
 
 
 
-
-    
   //////////// Relations \\\\\\\\\\\\
 
     public function role()

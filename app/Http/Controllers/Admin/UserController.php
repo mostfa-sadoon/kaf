@@ -156,27 +156,27 @@ class UserController extends Controller
                         'username' => 'required|unique:users,username,'.$request->id,
                         'email' => 'required|unique:users,email,'.$request->id,
                     ]);
-                    $data['username']=$request->username;
-                    $data['email']=$request->email;
-                    User::find($request->id)->update();
+                    $data['username']= $request->username;
+                    $data['email']= $request->email;
+                    User::find($request->id)->update($data);
                 }elseif($request->usertype==2){
                     //user is teacher
                     $request->validate([
-                        'username' => 'required|unique:teachers',
-                        'email' => 'required|unique:teachers',
+                        'username' => 'required|unique:teachers,username,'.$request->id,
+                        'email' => 'required|unique:teachers,email,'.$request->id,
                     ]);
-                    $data['username']=$request->username;
-                    $data['email']=$request->email;
-                    Teacher::find($request->id)->update();
+                    $data['username']= $request->username;
+                    $data['email']= $request->email;
+                    Teacher::find($request->id)->update($data);
                 }elseif($request->usertype==3){
                     //user is Admin
                     $request->validate([
-                        'username' => 'required|unique:admins',
-                        'email' => 'required|unique:admins',
+                        'username' => 'required|unique:admins,username,'.$request->id,
+                        'email' => 'required|unique:admins,email,'.$request->id,
                     ]);
-                    $data['username']=$request->username;
-                    $data['email']=$request->email;
-                    Admin::find($request->id)->update();
+                    $data['username']= $request->username;
+                    $data['email']= $request->email;
+                    Admin::find($request->id)->update($data);
                 }else{
                     return redirect()->back();
                 }

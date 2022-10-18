@@ -54,15 +54,15 @@
         <div>
             <span>البريد الالكتروني </span>
             @if(old('email'))
-            <input name="email" type="text" value="{{old('username')}}">
+            <input name="email" type="text" value="{{old('email')}}">
             @else
-            <input name="email" type="text" value="{{$user->username}}">
+            <input name="email" type="text" value="{{$user->email}}">
             @endif
             @if ($errors->has('email'))
               <span class="text-danger">{{ $errors->first('email')}}</span>
             @endif
         </div>
-        <div>
+        {{-- <div >
             <span>نوع المستخدم</span>
             <select name="usertype">
                  @foreach ($types as $type)
@@ -73,7 +73,7 @@
                       @endif
                  @endforeach
             </select>
-        </div>
+        </div> --}}
         <div>
             <span>كلمة السر</span>
             <input name="password" type="password">

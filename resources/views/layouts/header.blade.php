@@ -12,7 +12,7 @@
         <div class="user-data" id="userData">
             <div class="hello">
                 <p class="hi">أهلا</p>
-                <p class="username">عادل الشريطي العوفي</p>
+                <p class="username">{{Auth::guard('admin')->user()->fullname}}</p>
             </div>
             <div class="user-pic">
                 <p>ع</p>

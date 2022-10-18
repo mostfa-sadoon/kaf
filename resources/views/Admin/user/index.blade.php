@@ -65,8 +65,16 @@
                 <td>{{$user->l_name}}</td>
                 <td>{{$user->username}}</td>
                 <td>{{$user->national_id }}</td>
-                <td>{{$user->Bank_account_number  }}</td>
-                <td>طالب</td>
+                <td>{{$user->Bank_account_number}}</td>
+                <td>
+                    @if ($user->usertype==3)
+                          مدير
+                     @elseif ($user->usertype==2)
+                          معلم
+                     @else
+                           طالب
+                    @endif
+                </td>
                 <td></td>
                 <td></td>
                 <td>
