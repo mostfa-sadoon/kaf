@@ -90,15 +90,20 @@
         </div>
         <div class="price">
             @foreach ($Pricesettings as $Pricesetting)
-            <label>
-                @if($book->pricesetting->id==$Pricesetting->id)
-                    <input type="radio" name="price" value="{{$Pricesetting->id}}" checked>
-                    <span>{{$Pricesetting->translate(Config::get('app.locale'))->name}} @if($Pricesetting->value!=0){{$Pricesetting->value}}@endif</span>
-                @else
-                    <input type="radio" name="price" value="{{$Pricesetting->id}}">
-                    <span>{{$Pricesetting->translate(Config::get('app.locale'))->name}} @if($Pricesetting->value!=0){{$Pricesetting->value}}@endif</span>
+            <div>
+                <label>
+                    @if($book->pricesetting->id==$Pricesetting->id)
+                        <input type="radio" name="price" value="{{$Pricesetting->id}}" checked>
+                        <span>{{$Pricesetting->translate(Config::get('app.locale'))->name}} @if($Pricesetting->value!=0){{$Pricesetting->value}}@endif</span>
+                    @else
+                        <input type="radio" name="price" value="{{$Pricesetting->id}}">
+                        <span>{{$Pricesetting->translate(Config::get('app.locale'))->name}} @if($Pricesetting->value!=0){{$Pricesetting->value}}@endif</span>
+                    @endif
+                </label>
+                @if($Pricesetting->type=='constrain')
+                <input type="text" class="" name="price_value" id="constrain_value" style="width:150px" value="{{$book->price}}">
                 @endif
-            </label>
+            </div>
             @endforeach
             @if ($errors->has('price'))
             <p class="text-danger">{{ $errors->first('price')}}</p>

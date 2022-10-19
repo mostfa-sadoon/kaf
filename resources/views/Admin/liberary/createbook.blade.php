@@ -34,9 +34,7 @@
                 @foreach ($fileextensions as  $fileextension)
                 <option value="{{$fileextension->id}}">{{$fileextension->name}}</option>
                 @endforeach
-
             </select>
-
                 <label>الماده</label>
                 <select  name="subject">
                     @foreach ($subjects as  $subject)
