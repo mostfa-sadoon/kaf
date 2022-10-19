@@ -18,6 +18,7 @@ class pricesettings extends Migration
             $table->id();
             // when value be nullable that is mean the user chose restricted price option
             $table->integer('value')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

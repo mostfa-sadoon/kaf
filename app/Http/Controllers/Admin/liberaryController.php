@@ -41,29 +41,36 @@ class liberaryController extends Controller
          return view('Admin.liberary.createbook',compact('subjects','fileextensions','Bookcategories','classes','Semesters','Pricesettings'));
     }
     public function store(Request $request){
-       // dd($request->all());
          $request->validate([
-             'name'=>'required',
               'price'=>'required',
               'file'=>'required',
               'photo'=>'required',
          ]);
         $photo=$this->MoveImage($request->file('photo'),'uploads/book/photo');
         $file=$this->MoveImage($request->file('file'),'uploads/book/file');
-        Book::create([
-             'name'=>$request->name,
-             'owner_type'=>'App\Models\Admin',
-             'owner_id'=>Auth::guard('admin')->user()->id,
-             'img'=>$photo,
-             'file'=>$file,
-             'status'=>'new',
-             'price_id'=>$request->price,
-             'bookcategory_id'=>$request->Bookcategory,
-             'classe_id'=>$request->class,
-             'subject_id'=>$request->subject,
-             'semester_id'=>$request->semester,
-             'fileextension_id'=>$request->fileextension
-        ]);
+        $data=[];
+        $data=[
+            'owner_type'=>'App\Models\Admin',
+            'owner_id'=>Auth::guard('admin')->user()->id,
+            'img'=>$photo,
+            'file'=>$file,
+            'status'=>'new',
+            'price_id'=>$request->price,
+            'bookcategory_id'=>$request->Bookcategory,
+            'classe_id'=>$request->class,
+            'subject_id'=>$request->subject,
+            'semester_id'=>$request->semester,
+            'fileextension_id'=>$request->fileextension
+        ];
+        if($request->price==2){
+            $data['price']=$request->price_value;
+        }elseif($request->price==3){
+           $price= Pricesetting::find(3);
+           $data['price']= $price->value;
+        }else{
+            $data['price']=null;
+        }
+        Book::create($data);
         return redirect()->route('admin.liberary');
     }
     public function edit($id){

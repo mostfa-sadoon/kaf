@@ -21,25 +21,22 @@
         @csrf
         <div class="book">
             <div class="book-info">
-                <label>اسم الكتاب</label>
-                <input class="form-control" name="name" type="text">
-                 @if ($errors->has('name'))
-                   <p class="text-danger">{{ $errors->first('name')}}</p>
-                 @endif
                 <label>فئه الملف</label>
                 <select  name="Bookcategory">
                      @foreach ($Bookcategories as  $Bookcategory)
                        <option value="{{$Bookcategory->id}}">{{$Bookcategory->translate(Config::get('app.locale'))->name }}</option>
                      @endforeach
-
                 </select>
-                <label>نوع الملف</label>
-                <select  name="fileextension">
-                    @foreach ($fileextensions as  $fileextension)
-                    <option value="{{$fileextension->id}}">{{$fileextension->name}}</option>
-                    @endforeach
 
-                </select>
+            </select>
+            <label>نوع الملف</label>
+            <select  name="fileextension">
+                @foreach ($fileextensions as  $fileextension)
+                <option value="{{$fileextension->id}}">{{$fileextension->name}}</option>
+                @endforeach
+
+            </select>
+
                 <label>الماده</label>
                 <select  name="subject">
                     @foreach ($subjects as  $subject)
@@ -84,10 +81,15 @@
         </div>
         <div class="price">
             @foreach ($Pricesettings as $Pricesetting)
+            <div>
             <label>
-                <input type="radio" name="price" value="{{$Pricesetting->id}}">
+                <input type="radio" name="price" id="{{$Pricesetting->type}}" value="{{$Pricesetting->id}}" id="{{$Pricesetting->type}}">
                 <span>{{$Pricesetting->translate(Config::get('app.locale'))->name}} @if($Pricesetting->value!=0){{$Pricesetting->value}}@endif</span>
             </label>
+            @if($Pricesetting->type=='constrain')
+            <input type="text" class="d-none" name="price_value" id="constrain_value" style="width:150px">
+            @endif
+            </div>
             @endforeach
             @if ($errors->has('price'))
             <p class="text-danger">{{ $errors->first('price')}}</p>
@@ -103,5 +105,10 @@
 @section('scripts')
 <script src="{{asset('/js/dashboard.js')}}"></script>
 <script src="{{asset('/js/upload.js')}}"></script>
-
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script>
+    $('#constrain').change(function(){
+      $('#constrain_value').removeClass('d-none');
+    });
+</script>
 @endsection

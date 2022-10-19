@@ -22,15 +22,6 @@
         <input type="hidden" name="id" value="{{$book->id}}">
         <div class="book">
             <div class="book-info">
-                <label>اسم الكتاب</label>
-                @if (old('name'))
-                <input class="form-control" name="name" value="{{old('name')}}" type="text">
-                @else
-                <input class="form-control" name="name" value="{{$book->name}}" type="text">
-                @endif
-                 @if ($errors->has('name'))
-                   <p class="text-danger">{{ $errors->first('name')}}</p>
-                 @endif
                 <label>فئه الملف</label>
                 <select  name="Bookcategory">
                      @foreach ($Bookcategories as  $Bookcategory)
@@ -40,8 +31,8 @@
                        <option value="{{$Bookcategory->id}}">{{$Bookcategory->translate(Config::get('app.locale'))->name }}</option>
                     @endif
                    @endforeach
-
                 </select>
+
                 <label>نوع الملف</label>
                 <select  name="fileextension">
                     @foreach ($fileextensions as  $fileextension)

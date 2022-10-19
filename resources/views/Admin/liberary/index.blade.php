@@ -85,7 +85,7 @@
                 <td>{{$book->fileextention->name}}</td>
                 <td>{{$book->subject->name}}</td>
                 <td>{{$book->classe->name}}</td>
-                <td>{{$book->Pricesetting->value}}</td>
+                <td>{{$book->price}}</td>
                 <td>
                     <i class="fa-solid fa-cloud-arrow-up"></i>
                    <a href="{{route('admin.editbook',$book->id)}}"> <i class="fa-solid fa-pen-to-square"></i> </a>
