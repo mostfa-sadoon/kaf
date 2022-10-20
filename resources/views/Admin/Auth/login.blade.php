@@ -7,6 +7,8 @@
     <title>كاف | تسجيل الدخول</title>
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
+    <script src="{{asset('/js/all.min.js')}}"></script>
+
 </head>
 
 <body>
@@ -15,6 +17,8 @@
             <img src="assets/logo/Logo_kaaf.png" alt="كاف المطورة">
         </div>
         <div class="sign">
+            <a href="whatsapp://send?text=Hello World!&phone=+2001140465989" style="color: rgb(107, 61, 61);">  <i class="fa-brands fa-whatsapp " style="font-size:35"> 01140465989 </i></a>
+
             <p class="title">تسجيل الدخول</p>
             <div class="type">
                 <button id="teacher-btn" class="active">معلم</button>
@@ -57,5 +61,7 @@
         </div>
     </div>
     <script src="{{asset('js/index.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </body>
 </html>
