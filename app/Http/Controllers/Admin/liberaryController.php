@@ -27,7 +27,7 @@ class liberaryController extends Controller
         $fileextensions=Fileextension::get();
         $Bookcategories=Bookcategory::paginate(20);
         $Pricesettings=Pricesetting::get();
-        $books=Book::with('Bookcategory','fileextention','classe','subject','Pricesetting')->paginate(20);
+        $books=Book::with('Bookcategory','fileextention','classe','subject','Pricesetting','semester')->paginate(20);
          return view('Admin.liberary.index',compact('books','subjects','fileextensions','Bookcategories','classes','Semesters','Pricesettings'));
     }
     public function create(){
@@ -74,7 +74,7 @@ class liberaryController extends Controller
         return redirect()->route('admin.liberary');
     }
     public function edit($id){
-        $book=Book::with('Bookcategory','fileextention','classe','subject','Pricesetting')->find($id);
+        $book=Book::with('Bookcategory','fileextention','classe','subject','Pricesetting','semester')->find($id);
         $acadimicyears=Acadimicyear::paginate(20);
         $Semesters=Semester::paginate(20);
         $classes=Classe::paginate(20);
@@ -122,6 +122,13 @@ class liberaryController extends Controller
           ->paginate(20);
           return view('Admin.liberary.index',compact('books','subjects','fileextensions','Bookcategories','classes','Semesters','Pricesettings'));
      }
+
+    public function updatestatus($id,$newstatus){
+        $book=Book::find($id)->update([
+            'Acceptance'=>$newstatus
+        ]);
+        return redirect()->back();
+    }
 
     public function destroy(Request $request){
         $Book=Book::find($request->id)->delete();

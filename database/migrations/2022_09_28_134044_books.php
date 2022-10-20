@@ -21,6 +21,7 @@ class Books extends Migration
             $table->string('file')->unique();
             $table->string('img')->unique();
             $table->enum('status',['new','certificied']);
+            $table->enum('Acceptance',['true','false'])->default('false');
             $table->string('price')->nullable();
             $table->unsignedBigInteger('price_id')->nullable();
             $table->foreign('price_id')->references('id')->on('pricesettings')->onDelete('cascade');

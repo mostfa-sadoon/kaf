@@ -65,10 +65,13 @@
         <table>
             <tr>
                 <th>صنف المكتبة</th>
-                <th>فئة الملف</th>
-                <th>نوع الملف</th>
                 <th>المادة</th>
                 <th>الصف</th>
+                <th>الفصل</th>
+                <th>فئة الملف</th>
+                <th>نوع الملف</th>
+
+
                 <th>سعر الملف</th>
                 <th>العمليات</th>
             </tr>
@@ -81,12 +84,24 @@
                         مكتبه طالب
                     @endif
                 </td>
-                <td>{{$book->bookcategory->name}}</td>
-                <td>{{$book->fileextention->name}}</td>
                 <td>{{$book->subject->name}}</td>
                 <td>{{$book->classe->name}}</td>
+                <td>{{$book->semester->name}}</td>
+                <td>{{$book->bookcategory->name}}</td>
+                <td>{{$book->fileextention->name}}</td>
+                @if($book->price!=null)
                 <td>{{$book->price}}</td>
+                @else
+                <td>مجانا</td>
+                @endif
+
                 <td>
+                @if ($book->Acceptance=='true')
+                   <a href="{{route('admin.changestatus.book',[$book->id,'false'])}}"> <i class="fa-solid fa-check"></i> </a>
+                @else
+                <a href="{{route('admin.changestatus.book',[$book->id,'true'])}}"> <i class="fa-solid fas fa-times"></i>  </a>
+                @endif
+
                     <i class="fa-solid fa-cloud-arrow-up"></i>
                    <a href="{{route('admin.editbook',$book->id)}}"> <i class="fa-solid fa-pen-to-square"></i> </a>
                     <form action="{{route('book.destroy')}}" method="post">

@@ -51,6 +51,8 @@ Route::group(['namespace' => 'Admin\Auth'] , function () {
     Route::post('/liberary/destroybook','liberaryController@destroy')->name('book.destroy');
     Route::post('/liberary/search','liberaryController@search')->name('liberary.search');
 
+    Route::get('/liberary/changebook/Acceptance/{bookid}/{newstatus}','liberaryController@updatestatus')->name('admin.changestatus.book');
+
     //setting
     Route::resource('/subjects','subjectController');
     Route::resource('/classes','classesController');

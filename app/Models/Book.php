@@ -8,6 +8,7 @@ use App\Models\setting\Fileextension;
 use App\Models\setting\Subject;
 use App\Models\setting\Classe;
 use App\Models\setting\Pricesetting;
+use App\Models\setting\Semester;
 
 class Book extends Model
 {
@@ -30,6 +31,12 @@ class Book extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class);
+    }
+
     public function Pricesetting()
     {
         return $this->belongsTo(Pricesetting::class,'price_id');
