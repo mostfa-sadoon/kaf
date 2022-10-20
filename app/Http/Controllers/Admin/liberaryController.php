@@ -14,6 +14,7 @@ use App\Models\setting\Pricesetting;
 use App\Models\Book;
 use App\Traits\fileTrait;
 use Auth;
+Use Alert;
 
 class liberaryController extends Controller
 {
@@ -127,6 +128,8 @@ class liberaryController extends Controller
         $book=Book::find($id)->update([
             'Acceptance'=>$newstatus
         ]);
+        ($newstatus=='true')?$message="تم قبول الكتاب":$message="تم رفض الكتاب";
+        Alert::success('success',$message);
         return redirect()->back();
     }
 
